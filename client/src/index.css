@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Press+Start+2P&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Neon Palette */
+  --background: 240 30% 8%;       /* Dark deep purple/black */
+  --foreground: 180 100% 90%;     /* Cyan white */
+  
+  --primary: 317 100% 54%;        /* Hot Pink Neon */
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 180 100% 50%;      /* Cyan Neon */
+  --secondary-foreground: 240 30% 8%;
+  
+  --muted: 240 20% 15%;
+  --muted-foreground: 240 20% 60%;
+  
+  --accent: 280 100% 60%;         /* Purple Neon */
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 100% 60%;      /* Red Neon */
+  --destructive-foreground: 0 0% 100%;
+  
+  --border: 240 30% 20%;
+  --input: 240 30% 15%;
+  --ring: 317 100% 54%;
+  
+  --radius: 0.5rem;
+  
+  --font-display: 'Orbitron', sans-serif;
+  --font-retro: 'Press Start 2P', cursive;
+  --font-body: 'Rajdhani', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary selection:text-white overflow-hidden;
+    font-family: var(--font-body);
+    background-image: 
+      linear-gradient(rgba(18, 16, 30, 0.95), rgba(18, 16, 30, 0.95)),
+      linear-gradient(0deg, transparent 24%, rgba(255, 255, 255, .03) 25%, rgba(255, 255, 255, .03) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .03) 75%, rgba(255, 255, 255, .03) 76%, transparent 77%, transparent),
+      linear-gradient(90deg, transparent 24%, rgba(255, 255, 255, .03) 25%, rgba(255, 255, 255, .03) 26%, transparent 27%, transparent 74%, rgba(255, 255, 255, .03) 75%, rgba(255, 255, 255, .03) 76%, transparent 77%, transparent);
+    background-size: 100% 100%, 50px 50px, 50px 50px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    text-shadow: 0 0 10px rgba(var(--primary), 0.5);
+  }
+}
+
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+  }
+  
+  .box-glow {
+    box-shadow: 0 0 15px currentColor, inset 0 0 15px currentColor;
+  }
+  
+  .neon-border {
+    @apply border border-transparent;
+    box-shadow: 0 0 5px theme('colors.primary.DEFAULT'), inset 0 0 5px theme('colors.primary.DEFAULT'); 
+  }
+
+  .scanline {
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),
+      rgba(255,255,255,0) 50%,
+      rgba(0,0,0,0.1) 50%,
+      rgba(0,0,0,0.1)
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    opacity: 0.15;
+  }
+
+  .font-retro {
+    font-family: var(--font-retro);
+  }
+}
